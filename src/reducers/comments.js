@@ -1,4 +1,4 @@
-import { ADD_UPDATE_COMMENT } from '../actions';
+import { ADD_UPDATE_COMMENT } from '../actions/types';
 
 export const comments = (state={}, action) => {
     switch(action.type){

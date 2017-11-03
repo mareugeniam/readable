@@ -1,7 +1,4 @@
-export const ADD_CATEGORY = 'ADD_CATEGORY';
-export const ADD_UPDATE_POST = 'ADD_UPDATE_POST';
-export const ADD_UPDATE_COMMENT = 'ADD_UPDATE_COMMENT';
-export const SORT_DATA = 'SORT_DATA';
+import { ADD_CATEGORY, ADD_UPDATE_POST, ADD_UPDATE_COMMENT, SORT_DATA } from './types';
 
 export const addCategory = (category) => {
     return {

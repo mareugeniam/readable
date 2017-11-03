@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Row, Col, Media, Modal } from 'react-bootstrap';
 import { MdDateRange, MdClear, MdEdit, MdLocationHistory } from 'react-icons/lib/md';
 import LikeDislikeToggle from './LikeDislikeToggle';
-import { doCommentVote, doDeleteComment } from '../actions/actionsHandler';
+import * as actions from '../actions/commentsActions';
 import CreateEditCommentModal from './CreateEditCommentModal';
 
 class Comment extends Component {
@@ -19,12 +19,12 @@ class Comment extends Component {
     closeEditCommentModal = () => this.setState(() => ({ editCommentModalOpen: false }));
 
     handleDeleteComment = (comment) => {
-        this.props.deleteComment(comment.id);
+        this.props.doDeleteComment(comment.id);
         this.closeDeleteCommentModal();
     };
 
     render() {
-        const { comment, vote } = this.props;
+        const { comment, doCommentVote } = this.props;
         const { deleteCommentModalOpen, editCommentModalOpen } = this.state;
 
         return (
@@ -60,7 +60,7 @@ class Comment extends Component {
                             <p>{comment.body}</p>
                             <hr className="no-margin-top no-margin-bottom"/>
                             <div className="text-right">
-                                <LikeDislikeToggle itemVoted={comment} vote={vote}/>
+                                <LikeDislikeToggle itemVoted={comment} vote={doCommentVote}/>
                             </div>
                         </Media.Body>
                     </Media>                                   
@@ -98,13 +98,6 @@ class Comment extends Component {
 
 Comment.propTypes = {
     comment: PropTypes.object.isRequired
-} 
-
-function mapDispatchToProps(dispatch) {
-    return {
-        vote: (comment, option) => dispatch(doCommentVote(comment, option)),
-        deleteComment: (commentId) => dispatch(doDeleteComment(commentId))
-    }
 }
 
-export default connect(null, mapDispatchToProps)(Comment);
+export default connect(null, actions)(Comment);

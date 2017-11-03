@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Table, Button, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { loadComposedPostData, doPostVote, doSort, doDeletePost } from '../actions/actionsHandler';
+import { loadComposedPostData, doPostVote, doDeletePost } from '../actions/postsActions';
+import { doSort } from '../actions/sortActions';
 import { MdAddCircle, MdArrowDownward, MdArrowUpward, MdClear, MdEdit } from 'react-icons/lib/md';
 import LikeDislikeToggle from './LikeDislikeToggle';
 import CreateEditPostModal from './CreateEditPostModal';

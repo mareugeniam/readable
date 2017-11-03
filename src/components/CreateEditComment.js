@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Modal, Button, FormGroup, ControlLabel, FormControl, Alert } from 'react-bootstrap';
-import { doAddComment, doUpdateComment } from '../actions/actionsHandler';
+import { doAddComment, doUpdateComment } from '../actions/commentsActions';
 import UUID from 'uuid';
 
 class CreateEditComment extends Component {

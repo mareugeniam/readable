@@ -1,4 +1,4 @@
-import { ADD_UPDATE_POST } from '../actions';
+import { ADD_UPDATE_POST } from '../actions/types';
 
 export const posts = (state={}, action) => {
     switch(action.type){

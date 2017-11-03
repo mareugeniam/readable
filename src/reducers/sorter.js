@@ -1,4 +1,4 @@
-import { SORT_DATA } from '../actions';
+import { SORT_DATA } from '../actions/types';
 
 export const sortData = (state={}, action) => {
     switch(action.type){

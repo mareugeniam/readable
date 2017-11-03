@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadPostByIdWithComments, doPostVote, doDeletePost } from '../actions/actionsHandler';
+import { loadPostByIdWithComments, doPostVote, doDeletePost } from '../actions/postsActions';
 import { Label, Button, Grid, Row, Col, Modal } from 'react-bootstrap';
 import { MdPerson, MdDateRange, MdChatBubble, MdStyle, MdClear, MdEdit } from 'react-icons/lib/md';
 import NotFoundPage from './NotFoundPage';
@@ -8,6 +8,7 @@ import LikeDislikeToggle from './LikeDislikeToggle';
 import CreateEditPostModal from './CreateEditPostModal';
 import Comment from './Comment';
 import CreateEditCommentModal from './CreateEditCommentModal';
+import CategoriesNavBar from './CategoriesNavBar';
 
 class PostDetails extends Component {
     state = {
@@ -47,9 +48,12 @@ class PostDetails extends Component {
         const { editPostModalOpen, deletePostModalOpen, commentsFeedOpen, addNewCommentModalOpen } = this.state;
 
         return(
-            <div className="center-block">
+            <div>
                 {post[0] !== undefined ? (
                 <div>
+                    <div className="row col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2">
+                        <CategoriesNavBar categories={categories} history={this.props.history}/>
+                    </div>
                     <Grid className="grid-margin-bottom">
                         <Row>
                             <Col xs={8} xsOffset={2} md={8} mdOffset={2}><h1>{post[0].title}</h1></Col>

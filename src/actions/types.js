@@ -1,0 +1,4 @@
+export const ADD_CATEGORY = 'ADD_CATEGORY';
+export const ADD_UPDATE_POST = 'ADD_UPDATE_POST';
+export const ADD_UPDATE_COMMENT = 'ADD_UPDATE_COMMENT';
+export const SORT_DATA = 'SORT_DATA';

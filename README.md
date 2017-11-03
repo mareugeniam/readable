@@ -20,6 +20,16 @@ Node.js
 
 * start the server with `npm start`
 
+## Getting API server
+
+* clone or download the repository from [https://github.com/udacity/reactnd-project-readable-starter.git]
+
+## Install and start the API server
+
+* cd api-server
+* npm install
+* node server
+
 ## Built With
 
 * Node.js

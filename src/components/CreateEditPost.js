@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Modal, Button, FormGroup, ControlLabel, FormControl, Alert } from 'react-bootstrap';
-import { doAddPost, doUpdatePost } from '../actions/actionsHandler';
+import { doAddPost, doUpdatePost } from '../actions/postsActions';
 import UUID from 'uuid';
 
 class CreateEditPost extends Component {
