@@ -52,6 +52,13 @@ class RootPage extends Component{
             : 0);
     };
 
+    getFilteredPosts = (posts) => {
+        let filteredPosts = posts.filter(p => 
+            (this.props.match.params.category && this.props.match.params.category === p.category) 
+            || (this.props.match.path === "/" && p));
+        return filteredPosts;
+    };
+
     render() {
         const { categories, posts, vote, sorter } = this.props;
         const { addNewPostModalOpen, deletePostModalOpen, 
@@ -125,10 +132,7 @@ class RootPage extends Component{
                             </tr>
                         </thead>
                         <tbody>
-                            {posts.filter(p => 
-                                (this.props.match.params.category && this.props.match.params.category === p.category) 
-                                || (this.props.match.path === "/" && p))
-                                  .map((post, index) => (
+                            {this.getFilteredPosts(posts).map((post, index) => (
                                 <tr key={`${post.id}`} 
                                     onClick={(event) => {this.handleSelectedRow(event, post.category, post.id)}}
                                 >

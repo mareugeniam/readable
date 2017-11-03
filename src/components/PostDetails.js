@@ -15,7 +15,8 @@ class PostDetails extends Component {
         deletePostModalOpen: false,
         editPostModalOpen: false,
         commentsFeedOpen: true,
-        addNewCommentModalOpen: false
+        addNewCommentModalOpen: false,
+        defaultSort: 'voteScore'
     };
 
     componentDidMount() {
@@ -40,6 +41,13 @@ class PostDetails extends Component {
         this.props.deletePost(post.id);        
         this.closeDeletePostModal();
         this.props.history.push(`/`);
+    };
+
+    getFilteredComments = (post) => {
+        let filteredComments = post.comments.sort((a,b) => {
+            return (b[this.state.defaultSort] - a[this.state.defaultSort]);
+        });
+        return filteredComments;
     };
 
     render() {
@@ -111,7 +119,7 @@ class PostDetails extends Component {
                         }                        
                         {commentsFeedOpen && 
                             (post[0].comments.length > 0
-                                ? (post[0].comments.map(comment => (
+                                ? (this.getFilteredComments(post[0]).map(comment => (
                                 <Comment key={`${comment.id}`} comment={comment}/>
                             ))) : (<div className="row col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2">
                                         No comments yet. Be the first one to comment
@@ -184,9 +192,6 @@ const mapStateToProps = ({ categories, posts, comments }) => {
                 posts[postId].comments = Object.keys(comments)
                     .map(commentId => comments[commentId])
                     .filter(comment => comment.deleted === false && comment.parentId === postId)
-                    .sort((a,b) => {
-                        return (b[defaultSortColumn] - a[defaultSortColumn]);
-                    });
                 return posts[postId];
             })
     };
